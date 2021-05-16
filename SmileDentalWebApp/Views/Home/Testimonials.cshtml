@@ -1,0 +1,29 @@
+﻿@model IEnumerable<SmileDentalWebApp.Models.Testimonial>
+
+@{
+    ViewData["Title"] = "Testimonials";
+}
+
+<div class="text-center">
+    <h1 class="display-4 font-text">Testimonials</h1>
+    <p>We value your feedback. </p>
+    <a class="btn btn-primary" asp-action="AddTestimonial"><i class="fa fa-paper-plane"></i> Please Click Here to Add Testimonial for us.</a>
+</div>
+<hr />
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 mb-2">
+            <div class="card w-100">
+                <div class="card-body">
+                    <h4 class="card-title">@item.Name</h4>
+                    <p class="card-text"><strong>Review: </strong> @item.TestimonialText</p>
+                    <p class="card-text">On @item.TestimonialDate.ToString("dddd, dd MMMM yyyy")</p>
+                    
+                    <p class="card-text"><strong>Rating: </strong>  @item.Rating</p>
+                </div>
+            </div>
+
+        </div>
+    }
+</div>

@@ -1,0 +1,42 @@
+﻿@model SmileDentalWebApp.Models.Testimonial
+
+@{
+    ViewData["Title"] = "AddTestimonial";
+}
+
+<div class="text-center">
+    <h1 class="display-4 font-text">Testimonials</h1>
+    <p>We value your feedback.</p>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <form asp-action="AddTestimonial">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TestimonialText" class="control-label"></label>
+                <textarea asp-for="TestimonialText" class="form-control"></textarea>
+                <span asp-validation-for="TestimonialText" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Rating" class="control-label"></label>
+                <input asp-for="Rating" min="0" max="5" class="form-control" />
+                <span asp-validation-for="Rating" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-block btn-primary"><i class="fa fa-paper-plane"></i> Add Your Testimonial</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

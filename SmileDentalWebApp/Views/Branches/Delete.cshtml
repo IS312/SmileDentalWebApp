@@ -1,0 +1,40 @@
+﻿@model SmileDentalWebApp.Models.Branch
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="text-center">
+    <h1 class="display-4 font-text">Delete Branch Details</h1>
+    <p>You can remove branch details here.</p>
+</div>
+<hr />
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BranchName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BranchName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BranchAddress)
+            <i class="fa fa-address-card"></i>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BranchAddress)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BranchContactNo) <i class="fa fa-phone"></i>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BranchContactNo)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="BranchID" />
+        <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Confirm Delete</button>
+        <a asp-action="Index" class="btn btn-info"><i class="fa fa-binoculars"></i> View All Branches</a>
+    </form>
+</div>

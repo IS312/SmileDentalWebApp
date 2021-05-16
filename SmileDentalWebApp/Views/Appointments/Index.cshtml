@@ -1,0 +1,28 @@
+﻿@model IEnumerable<SmileDentalWebApp.Models.Appointment>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="text-center">
+    <h1 class="display-4 font-text">Patient Appointments</h1>
+    <p>You can manage your appointments here.</p>
+</div>
+<hr /><div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 mb-2">
+            <div class="card w-100">
+                <div class="card-body">
+                    <h4 class="card-title">@item.Name</h4>
+                    <p class="card-text">Age: @item.Age years old</p>
+                    <p class="card-text">On @item.AppointmentDate.ToString("dddd, dd MMMM yyyy")</p>
+                    <p class="card-text">At @item.Branch.BranchName</p>
+                    <p class="card-text">@item.ReasonForVisit</p>
+                    <p class="card-text"><i class="fa fa-phone"></i> @item.ContactNo</p>
+                </div>
+            </div>
+
+        </div>
+    }
+</div>

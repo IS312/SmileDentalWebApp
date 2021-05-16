@@ -1,0 +1,30 @@
+﻿@model SmileDentalWebApp.Models.Dentist
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="text-center">
+    <h1 class="display-4 font-text">Delete Dentist Details</h1>
+    <p>You can remove @Model.DentistName details here.</p>
+</div>
+<hr />
+<div class="container">
+    <div class="row">
+        <div class="card col-md-4">
+            <img class="card-img-top" src="~/dentist/@Model.DentistID@Model.Extension" alt="@Model.DentistName" style="width:100%">
+        </div>
+        <div class="col-md-8">
+            <p><strong>Title:</strong>@Model.Title</p>
+            <p><strong>Education:</strong>@Model.Education</p>
+            <p><strong>Language:</strong>@Model.Language</p>
+            <p><strong>Interest:</strong>@Model.Interest</p>
+            <p><strong>About:</strong>@Model.About</p>
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="DentistID" />
+                <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Confirm Delete</button>
+                <a asp-action="Index" class="btn btn-info"><i class="fa fa-binoculars"></i> View All Dentists</a>
+            </form>
+        </div>
+    </div>    
+</div>

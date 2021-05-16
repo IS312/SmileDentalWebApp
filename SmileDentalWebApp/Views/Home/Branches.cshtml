@@ -1,0 +1,28 @@
+﻿@model IEnumerable<SmileDentalWebApp.Models.Branch>
+
+@{
+    ViewData["Title"] = "Branches";
+}
+
+<div class="text-center">
+    <h1 class="display-4 font-text">Our <i class="fa fa-university"></i> Branches</h1>
+</div>
+<hr />
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 mb-2">
+            <div class="card w-100">
+                <center>
+                    <img src="~/images/smile.png" alt="@item.BranchName" style="width:50%;height:50%;">
+                </center>
+                <div class="card-body">
+                    <h4 class="card-title">@item.BranchName</h4>
+                    <p class="card-text"><i class="fa fa-address-card"></i> @item.BranchAddress</p>
+                    <p class="card-text"><i class="fa fa-phone"></i> @item.BranchContactNo</p>
+                </div>
+            </div>
+            
+        </div>
+    }
+</div>

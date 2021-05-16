@@ -1,0 +1,26 @@
+﻿@model IEnumerable<SmileDentalWebApp.Models.Dentist>
+
+@{
+    ViewData["Title"] = "Dentists";
+}
+
+<div class="text-center">
+    <h1 class="display-4 font-text">Our <i class="fa fa-user-md"></i>  Dentists</h1>
+</div>
+<hr />
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 mb-3">
+            <div class="card w-100">
+                <center>
+                    <img src="~/dentist/@item.DentistID@item.Extension" alt="@item.DentistName" style="width:100%">
+                </center>
+                <div class="card-body">
+                    <h4 class="text-center">@item.DentistName</h4>
+                    <a asp-action="DentistDetails" class="btn btn-info btn-block" asp-route-id="@item.DentistID"><i class="fa fa-binoculars"></i> View Details</a>                
+                </div>
+            </div>
+        </div>
+    }
+</div>

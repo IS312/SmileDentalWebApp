@@ -1,0 +1,97 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SmileDentalWebApp</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@500&display=swap" rel="stylesheet">
+    <style>
+        .font-text {
+            font-family: 'Fira Sans', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-light border-bottom mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="~/images/logo.png" />
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark font-text " asp-area="" asp-controller="Home" asp-action="Index"><i class="fa fa-home"></i> Home</a>
+                        </li>
+                        @if (SignInManager.IsSignedIn(User) && User.IsInRole("admin"))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link text-dark font-text dropdown-toggle" href="#" id="drop1"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-tasks"></i> Admin Operations</a>
+                                <div class="dropdown-menu" aria-labelledby="drop1">
+                                    <a class="dropdown-item font-text" asp-area="" asp-controller="Branches" asp-action="Index"><i class="fa fa-university"></i> Branches</a>
+                                    <a class="dropdown-item font-text" asp-area="" asp-controller="Dentists" asp-action="Index"><i class="fa fa-user-md"></i> Dentists</a>
+                                    <a class="dropdown-item font-text" asp-area="" asp-controller="Appointments" asp-action="Index"><i class="fa fa-calendar-plus-o"></i> Appointments</a>
+                                    <a class="dropdown-item font-text" asp-area="" asp-controller="Testimonials" asp-action="Index"><i class="fa fa-keyboard-o"></i> Testimonials</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark  font-text" asp-area="Identity" asp-page="/Account/RegisterAdmin"><i class="fa fa-user-plus"></i> Register Admin</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark font-text " asp-area="" asp-controller="Home" asp-action="Branches"><i class="fa fa-university"></i> Branches</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark font-text " asp-area="" asp-controller="Home" asp-action="Dentists"><i class="fa fa-user-md"></i> Dentists</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark font-text " asp-area="" asp-controller="Home" asp-action="Testimonials"><i class="fa fa-keyboard-o"></i> Testimonials</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark font-text " asp-area="" asp-controller="Home" asp-action="BookAppointment"><i class="fa fa-calendar-plus-o"></i> Book Appointment</a>
+                            </li>
+                            @if (SignInManager.IsSignedIn(User))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark font-text " asp-area="" asp-controller="Home" asp-action="Appointments"><i class="fa fa-calendar-plus-o"></i> Appointments</a>
+                                </li>
+                            }
+                        }
+                        <partial name="_LoginPartial" />
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-dark bg-light">
+        <div class="container">
+            &copy; 2021 - <span class="font-text">Smile Dental</span>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

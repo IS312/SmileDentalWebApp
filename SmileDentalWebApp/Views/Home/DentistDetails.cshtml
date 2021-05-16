@@ -1,0 +1,21 @@
+﻿@model SmileDentalWebApp.Models.Dentist
+
+@{
+    ViewData["Title"] = "DentistDetails";
+}
+<div class="text-center">
+    <h1 class="display-4 font-text">@Model.DentistName Details</h1>
+</div>
+<hr />
+<div class="row">
+    <div class="card col-md-4">
+        <img class="card-img-top" src="~/dentist/@Model.DentistID@Model.Extension" alt="@Model.DentistName" style="width:100%">
+    </div>
+    <div class="col-md-8">
+        <p><strong>Title: </strong>@Model.Title</p>
+        <p><strong>Education: </strong>@Model.Education</p>
+        <p><strong>Language: </strong>@Model.Language</p>
+        <p><strong>Interest: </strong>@Model.Interest</p>
+        <p><strong>About:</strong><br />@Model.About</p>
+    </div>
+</div>

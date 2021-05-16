@@ -1,0 +1,46 @@
+﻿@model SmileDentalWebApp.Models.Branch
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="text-center">
+    <h1 class="display-4 font-text">Add New Branch</h1>
+    <p>You can add new branch details here.</p>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="BranchName" class="control-label"></label>
+                <input asp-for="BranchName" class="form-control" />
+                <span asp-validation-for="BranchName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BranchAddress" class="control-label"></label>
+                <input asp-for="BranchAddress" class="form-control" />
+                <span asp-validation-for="BranchAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BranchContactNo" class="control-label"></label>
+                <input asp-for="BranchContactNo" class="form-control" />
+                <span asp-validation-for="BranchContactNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-block btn-primary"><i class="fa fa-paper-plane"></i> Save Branch Details</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-info"><i class="fa fa-binoculars"></i> View All Branches</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
